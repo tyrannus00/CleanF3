@@ -1,0 +1,25 @@
+{
+  "clean-debug.midnightconfig.title":"Clean F3 Einstellungen",
+
+  "clean-debug.midnightconfig.hideTags":"Verstecke Tags",
+  "clean-debug.midnightconfig.hideTags.tooltip":"Versteckt die Tags des Blockes den du gerade anschaust.",
+
+  "clean-debug.midnightconfig.hardwareMode":"Hardware modus",
+  "clean-debug.midnightconfig.hardwareMode.tooltip":"Alles zeigt alle Informationen über deinen Rechner, Reduziert nur die Arbeitsspeichernutzung und Nichts versteckt alles.",
+  "clean-debug.midnightconfig.enum.HardwareMode.ALL":"Alles",
+  "clean-debug.midnightconfig.enum.HardwareMode.REDUCED":"Reduziert",
+  "clean-debug.midnightconfig.enum.HardwareMode.NONE":"Nichts",
+
+  "clean-debug.midnightconfig.hideDebugHints":"Verstecke Debughinweise",
+  "clean-debug.midnightconfig.hideDebugHints.tooltip":"Versteckt die Hinweise für das Debug-Kuchendiagramm und die TPS & FPS Graphen.",
+
+  "clean-debug.midnightconfig.shyFluids":"Schüchterne Flüssigkeitsinfos",
+  "clean-debug.midnightconfig.shyFluids.tooltip":"Zeigt Informationen über Flüssigkeiten in einem Block nur dann, wenn er Flüssigkeiten enthält.",
+
+  "clean-debug.midnightconfig.hideSodium":"Verstecke Sodiums Debuginfos",
+  "clean-debug.midnightconfig.hideSodium.tooltip":"Versteckt einige der durch Sodium dem Debugbildschirm hinzugefügten Informationen.",
+
+
+  "modmenu.descriptionTranslation.clean-debug": "Entfernt nutzlose Informationen aus dem Debugbildschirm.",
+  "modmenu.summaryTranslation.clean-debug": "Erlaubt das Individualisieren des F3-Bildschirms."
+}

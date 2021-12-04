@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.tyrannus.cleandebug.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "client": [
+    "DebugHudMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

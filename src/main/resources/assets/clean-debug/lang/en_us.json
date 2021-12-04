@@ -1,0 +1,25 @@
+{
+    "clean-debug.midnightconfig.title":"Clean F3 Configuration",
+
+    "clean-debug.midnightconfig.hideTags":"Hide tags",
+    "clean-debug.midnightconfig.hideTags.tooltip":"Hides the tags of the block you are looking at.",
+
+    "clean-debug.midnightconfig.hardwareMode":"Hardware mode",
+    "clean-debug.midnightconfig.hardwareMode.tooltip":"All shows all information about your PC, reduced shows only the memory usage and none hides everything.",
+    "clean-debug.midnightconfig.enum.HardwareMode.ALL":"All",
+    "clean-debug.midnightconfig.enum.HardwareMode.REDUCED":"Reduced",
+    "clean-debug.midnightconfig.enum.HardwareMode.NONE":"None",
+
+    "clean-debug.midnightconfig.hideDebugHints":"Hide debug hints",
+    "clean-debug.midnightconfig.hideDebugHints.tooltip":"Hides the hints for the debug pie & tps graph",
+
+    "clean-debug.midnightconfig.shyFluids":"Shy fluid info",
+    "clean-debug.midnightconfig.shyFluids.tooltip":"Will only show fluid information about a block when the block actually contains one.",
+
+    "clean-debug.midnightconfig.hideSodium":"Hide Sodium's debug info",
+    "clean-debug.midnightconfig.hideSodium.tooltip":"Hides some of the information Sodium adds to the debug screen.",
+
+
+    "modmenu.descriptionTranslation.clean-debug": "Removes useless information from the debug screen.",
+    "modmenu.summaryTranslation.clean-debug": "Allows you to customize what you see on the F3 screen."
+}

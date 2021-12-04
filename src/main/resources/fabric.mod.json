@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "clean-debug",
+  "version": "${version}",
+  "name": "Clean F3",
+  "description": "Removes useless information from the debug screen.",
+  "authors": [
+    "tyrannus00"
+  ],
+  "contact": {
+    "sources": "https://github.com/tyrannus00/CleanF3",
+    "issues": "https://github.com/tyrannus00/CleanF3/issues"
+  },
+  "icon": "assets/clean-debug/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.tyrannus.cleandebug.CleanDebug"
+    ]
+  },
+  "mixins": [
+    "clean-debug.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "java": ">=16"
+  }
+}
