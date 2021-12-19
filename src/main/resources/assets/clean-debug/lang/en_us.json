@@ -10,7 +10,7 @@
     "clean-debug.midnightconfig.enum.HardwareMode.REDUCED":"Reduced",
     "clean-debug.midnightconfig.enum.HardwareMode.NONE":"None",
 
-    "clean-debug.midnightconfig.hideActiveRenderer":"Hides the active renderer.",
+    "clean-debug.midnightconfig.hideActiveRenderer":"Hides the active renderer",
     "clean-debug.midnightconfig.hideActiveRenderer.tooltip":"Self explanatory",
 
     "clean-debug.midnightconfig.hideDebugHints":"Hide debug hints",
