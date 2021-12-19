@@ -1,0 +1,5 @@
+/run
+/.gradle
+/.idea
+/build
+/build.bat

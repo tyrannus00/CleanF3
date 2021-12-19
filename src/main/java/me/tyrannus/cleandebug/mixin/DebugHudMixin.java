@@ -1,6 +1,5 @@
 package me.tyrannus.cleandebug.mixin;
 
-import com.google.common.collect.Lists;
 import me.tyrannus.cleandebug.config.CleanDebugConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.DebugHud;
@@ -24,32 +23,63 @@ public class DebugHudMixin {
 
 	@Shadow private HitResult fluidHit;
 
-	@ModifyVariable(method = "getRightText", at = @At("STORE"))
-	private <E> List<E> hardwareInfo2(List<E> elements) {
-		if(CleanDebugConfig.hideSodium) {
-			for(int i = 0; i < elements.size(); i++) {
-				String string = (String) elements.get(i);
-				if(string.contains("Sodium Renderer")) {
-					elements.subList(i - 1, i + 6).clear();
-					break;
+	@ModifyVariable(method = "renderRightText", at = @At("STORE"))
+	private <E> List<E> renderRightText(List<E> elements) {
+
+		int max = elements.size();
+		for(int i = 0; i < max; i++) {
+			String string = (String) elements.get(i);
+			if(string.contains("CPU: ")) {
+				if(CleanDebugConfig.hardwareMode.hideSpecs()) {
+					elements.subList(i - 1, i + 5).clear();
+					i--;
+					max -= 6;
 				}
+				if(CleanDebugConfig.hardwareMode == CleanDebugConfig.HardwareMode.NONE) {
+					elements.subList(0, i).clear();
+					max -= i;
+					i = 0;
+				}
+			}
+			if(CleanDebugConfig.hideIris && string.contains("[Iris] ")) {
+				elements.remove(i);
+				i--;
+				max--;
+			}
+			if(CleanDebugConfig.hideSodium && string.contains("Sodium Renderer")) {
+				elements.subList(i - 1, i + 6).clear();
+				i -= 2;
+				max -= 7;
 			}
 		}
+		if(elements.size() > 0 && ((String) elements.get(0)).isEmpty()) {
+			elements.remove(0);
+		}
+		return elements;
+	}
 
-		return switch(CleanDebugConfig.hardwareMode) {
-			case ALL -> elements;
-			case REDUCED -> {
-				for(int i = 0; i < elements.size(); i++) {
-					String string = (String) elements.get(i);
-					if(string.contains("CPU: ")) {
-						elements.subList(i - 1, i + 5).clear();
-						break;
-					}
-				}
-				yield elements;
+	@ModifyVariable(method = "renderLeftText", at = @At(value = "INVOKE", target = "Ljava/util/List;size()I"))
+	private <E> List<E> renderLeftText(List<E> elements) {
+		int max = elements.size();
+		for(int i = 0; i < max; i++) {
+			String string = (String) elements.get(i);
+			if(CleanDebugConfig.hideIris && (string.contains("[Iris] ") || string.contains("[Entity Batching] "))) {
+				elements.remove(i);
+				i--;
+				max--;
 			}
-			case NONE -> Lists.newArrayList();
-		};
+			if(CleanDebugConfig.hideActiveRenderer && string.contains("[Fabric] Active renderer: ")) {
+				elements.remove(i);
+				i--;
+				max--;
+			}
+			if(CleanDebugConfig.hideDebugHints && string.contains("Debug: Pie")) {
+				elements.subList(i, i + 2).clear();
+				i--;
+				max -= 2;
+			}
+		}
+		return elements;
 	}
 
 	@Redirect(method = "getRightText", at = @At(value = "INVOKE", target = "Ljava/util/Iterator;hasNext()Z", ordinal = 1))
@@ -74,14 +104,6 @@ public class DebugHudMixin {
 			return BlockHitResult.createMissed(null, null, null);
 		}
 		return fluidHit;
-	}
-
-	@Redirect(method = "renderLeftText", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
-	protected final <E> boolean blockTags(List list, E e) {
-		if(CleanDebugConfig.hideDebugHints) {
-			return false;
-		}
-		return list.add(e);
 	}
 
 

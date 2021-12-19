@@ -10,6 +10,9 @@
     "clean-debug.midnightconfig.enum.HardwareMode.REDUCED":"Reduced",
     "clean-debug.midnightconfig.enum.HardwareMode.NONE":"None",
 
+    "clean-debug.midnightconfig.hideActiveRenderer":"Hides the active renderer.",
+    "clean-debug.midnightconfig.hideActiveRenderer.tooltip":"Self explanatory",
+
     "clean-debug.midnightconfig.hideDebugHints":"Hide debug hints",
     "clean-debug.midnightconfig.hideDebugHints.tooltip":"Hides the hints for the debug pie & tps graph",
 
@@ -18,6 +21,9 @@
 
     "clean-debug.midnightconfig.hideSodium":"Hide Sodium's debug info",
     "clean-debug.midnightconfig.hideSodium.tooltip":"Hides some of the information Sodium adds to the debug screen.",
+
+    "clean-debug.midnightconfig.hideIris":"Hide Iris' debug info",
+    "clean-debug.midnightconfig.hideIris.tooltip":"Hides the information Iris adds to the debug screen.",
 
 
     "modmenu.descriptionTranslation.clean-debug": "Removes useless information from the debug screen.",
