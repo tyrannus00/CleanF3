@@ -82,7 +82,7 @@ public class DebugHudMixin {
 		return elements;
 	}
 
-	@Redirect(method = "getRightText", at = @At(value = "INVOKE", target = "Ljava/util/Iterator;hasNext()Z", ordinal = 1))
+	@Redirect(method = "getRightText", at = @At(value = "INVOKE", target = "Ljava/util/Iterator;hasNext()Z", ordinal = 0))
 	protected final boolean blockTags(Iterator iterator) {
 		if(CleanDebugConfig.hideTags) {
 			return false;
@@ -90,7 +90,7 @@ public class DebugHudMixin {
 		else return iterator.hasNext();
 	}
 
-	@Redirect(method = "getRightText", at = @At(value = "INVOKE", target = "Ljava/util/Iterator;hasNext()Z", ordinal = 3))
+	@Redirect(method = "getRightText", at = @At(value = "INVOKE", target = "Ljava/util/Iterator;hasNext()Z", ordinal = 1))
 	protected final boolean fluidTags(Iterator iterator) {
 		if(CleanDebugConfig.hideTags) {
 			return false;
