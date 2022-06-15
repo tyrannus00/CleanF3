@@ -1,4 +1,5 @@
 /run
+/production
 /.gradle
 /.idea
 /build

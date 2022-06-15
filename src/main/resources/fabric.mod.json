@@ -15,14 +15,14 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "me.tyrannus.cleandebug.CleanDebug"
+      "de.tyrannus.cleandebug.CleanDebug"
     ]
   },
   "mixins": [
     "clean-debug.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.11.3",
+    "fabricloader": ">=0.12.12",
     "fabric": "*",
     "java": ">=16"
   }
