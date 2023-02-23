@@ -1,4 +1,4 @@
-package de.tyrannus.cleandebug.config;
+package de.tyrannus.cleandebug;
 
 import eu.midnightdust.lib.config.MidnightConfig;
 
@@ -26,11 +26,6 @@ public class CleanDebugConfig extends MidnightConfig {
     public static boolean hideIris = true;
 
     public enum HardwareMode {
-        ALL, REDUCED, NONE;
-
-        public boolean hideSpecs() {
-            return this != ALL;
-        }
+        ALL, REDUCED, NONE
     }
-
 }
