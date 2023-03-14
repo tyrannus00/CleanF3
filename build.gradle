@@ -16,7 +16,10 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modRuntimeOnly "net.fabricmc.fabric-api:fabric-models-v0:${project.models_version}"
+	modRuntimeOnly "net.fabricmc.fabric-api:fabric-resource-loader-v0:${project.resource_loader_version}"
+	modRuntimeOnly "net.fabricmc.fabric-api:fabric-rendering-v1:${project.rendering_version}"
+	modRuntimeOnly "net.fabricmc.fabric-api:fabric-lifecycle-events-v1:${project.lifecycle_events_version}"
 
 	modImplementation "maven.modrinth:midnightlib:${project.midnightlib_version}"
 	include "maven.modrinth:midnightlib:${project.midnightlib_version}"

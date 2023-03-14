@@ -3,6 +3,7 @@ package de.tyrannus.cleandebug.mixin;
 import de.tyrannus.cleandebug.CleanDebugConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.DebugHud;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import org.spongepowered.asm.mixin.Final;
@@ -11,7 +12,9 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.List;
 
@@ -22,12 +25,15 @@ public abstract class DebugHudMixin {
     @Final
     private MinecraftClient client;
 
-    @Shadow
-    protected abstract List<String> getRightText();
-
-    @Redirect(method = "renderLeftText", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z", ordinal = 2))
-    private <E> boolean iris(List<String> lines, E e) {
-
+    @Inject(
+            method = "renderLeftText",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Ljava/util/List;add(Ljava/lang/Object;)Z",
+                    ordinal = 2
+            ), locals = LocalCapture.CAPTURE_FAILHARD
+    )
+    private void onRenderLeftText(MatrixStack matrices, CallbackInfo ci, List<String> lines) {
         if (CleanDebugConfig.hideIris) {
             lines.removeIf(s -> s.startsWith("[Iris]"));
             lines.removeIf(s -> s.startsWith("[Entity Batching]"));
@@ -40,14 +46,17 @@ public abstract class DebugHudMixin {
         if (CleanDebugConfig.hideDebugHints) {
             lines.removeIf(s -> s.contains("Debug: Pie"));
         }
-
-        return true;
     }
 
-    @Redirect(method = "renderRightText", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/DebugHud;getRightText()Ljava/util/List;"))
-    private List<String> iris(DebugHud hud) {
-        var lines = getRightText();
-
+    @Inject(
+            method = "renderRightText",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Ljava/util/List;size()I"
+            ),
+            locals = LocalCapture.CAPTURE_FAILHARD
+    )
+    private void onRenderRightText(MatrixStack matrices, CallbackInfo ci, List<String> lines, int i) {
         if (CleanDebugConfig.hideIris) {
             lines.removeIf(s -> s.startsWith("[Iris]"));
         }
@@ -55,8 +64,6 @@ public abstract class DebugHudMixin {
         if (CleanDebugConfig.hardwareMode == CleanDebugConfig.HardwareMode.NONE) {
             lines.removeIf(s -> s.startsWith("Direct Buffers:"));
         }
-
-        return lines;
     }
 
     @Inject(method = "getRightText", at = @At(value = "RETURN", ordinal = 1))
