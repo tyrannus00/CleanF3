@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.1-SNAPSHOT'
+	id 'fabric-loom' version '1.2-SNAPSHOT'
 }
 
 version = project.mod_version
@@ -16,10 +16,7 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	modRuntimeOnly "net.fabricmc.fabric-api:fabric-models-v0:${project.models_version}"
-	modRuntimeOnly "net.fabricmc.fabric-api:fabric-resource-loader-v0:${project.resource_loader_version}"
-	modRuntimeOnly "net.fabricmc.fabric-api:fabric-rendering-v1:${project.rendering_version}"
-	modRuntimeOnly "net.fabricmc.fabric-api:fabric-lifecycle-events-v1:${project.lifecycle_events_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
 	modImplementation "maven.modrinth:midnightlib:${project.midnightlib_version}"
 	include "maven.modrinth:midnightlib:${project.midnightlib_version}"
@@ -35,6 +32,6 @@ processResources {
 
 jar {
 	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}"}
+		rename { "${it}_${project.archives_base_name}"}
 	}
 }
