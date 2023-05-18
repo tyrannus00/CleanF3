@@ -1,4 +1,4 @@
-package de.tyrannus.cleandebug.mixin;
+package de.tyrannus.cleandebug.mixins;
 
 import de.tyrannus.cleandebug.CleanDebugConfig;
 import net.minecraft.client.MinecraftClient;
@@ -31,20 +31,33 @@ public abstract class DebugHudMixin {
                     value = "INVOKE",
                     target = "Ljava/util/List;add(Ljava/lang/Object;)Z",
                     ordinal = 2
-            ), locals = LocalCapture.CAPTURE_FAILHARD
+            ),
+            locals = LocalCapture.CAPTURE_FAILHARD
     )
     private void onRenderLeftText(MatrixStack matrices, CallbackInfo ci, List<String> lines) {
-        if (CleanDebugConfig.hideIris) {
-            lines.removeIf(s -> s.startsWith("[Iris]"));
-            lines.removeIf(s -> s.startsWith("[Entity Batching]"));
-        }
-
         if (CleanDebugConfig.hideActiveRenderer) {
             lines.removeIf(s -> s.startsWith("[Fabric] Active renderer:"));
         }
 
         if (CleanDebugConfig.hideDebugHints) {
             lines.removeIf(s -> s.contains("Debug: Pie"));
+        }
+
+        if (CleanDebugConfig.hideIris) {
+            lines.removeIf(s -> s.startsWith("[Iris]"));
+            lines.removeIf(s -> s.startsWith("[Entity Batching]"));
+        }
+
+        if (CleanDebugConfig.hideLitematica) {
+            lines.removeIf(s -> s.startsWith("§6[Litematica]§r"));
+        }
+
+        if (CleanDebugConfig.hideEntityCulling) {
+            lines.removeIf(s -> s.startsWith("[Culling]"));
+        }
+
+        if (CleanDebugConfig.hideViaFabric) {
+            lines.removeIf(s -> s.startsWith("[ViaFabric]"));
         }
     }
 
