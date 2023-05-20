@@ -22,7 +22,7 @@ dependencies {
 	modImplementation "maven.modrinth:midnightlib:${project.midnightlib_version}"
 	include "maven.modrinth:midnightlib:${project.midnightlib_version}"
 
-	modCompileOnly files('libs/PresenceFootsteps-1.8.0.jar')
+	modCompileOnly 'maven.modrinth:presence-footsteps:1.8.2'
 }
 
 processResources {
