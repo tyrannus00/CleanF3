@@ -11,15 +11,15 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.List;
 
 @Mixin(value = DebugHud.class, priority = 900)
-public abstract class DebugHudMixin {
+public class DebugHudMixin {
 
     @Shadow
     @Final
@@ -30,6 +30,7 @@ public abstract class DebugHudMixin {
             at = @At(
                     value = "INVOKE",
                     target = "Ljava/util/List;add(Ljava/lang/Object;)Z",
+                    shift = At.Shift.AFTER,
                     ordinal = 2
             ),
             locals = LocalCapture.CAPTURE_FAILHARD
@@ -41,6 +42,10 @@ public abstract class DebugHudMixin {
 
         if (CleanDebugConfig.hideDebugHints) {
             lines.removeIf(s -> s.contains("Debug: Pie"));
+        }
+
+        if (CleanDebugConfig.hideHelpShortcut) {
+            lines.removeIf(s -> s.equals("For help: press F3 + Q"));
         }
 
         if (CleanDebugConfig.hideIris) {
@@ -61,77 +66,30 @@ public abstract class DebugHudMixin {
         }
     }
 
-    @Inject(
-            method = "renderRightText",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Ljava/util/List;size()I"
-            ),
-            locals = LocalCapture.CAPTURE_FAILHARD
-    )
-    private void onRenderRightText(MatrixStack matrices, CallbackInfo ci, List<String> lines, int i) {
-        if (CleanDebugConfig.hideIris) {
-            lines.removeIf(s -> s.startsWith("[Iris]"));
-        }
-
-        if (CleanDebugConfig.hardwareMode == CleanDebugConfig.HardwareMode.NONE) {
-            lines.removeIf(s -> s.startsWith("Direct Buffers:"));
-        }
-    }
-
-    @Inject(method = "getRightText", at = @At(value = "RETURN", ordinal = 1))
-    private void blockTags(CallbackInfoReturnable<List<String>> cir) {
-        var lines = cir.getReturnValue();
-
-        if (CleanDebugConfig.hideSodium) {
-            var sodiumIndex = lines.indexOf("Sodium Renderer");
-
-            if (sodiumIndex != -1) {
-                lines.remove(sodiumIndex);
-                lines.remove(sodiumIndex);
-            }
-        }
-
+    @ModifyVariable(method = "renderRightText", at = @At(value = "STORE"))
+    private List<String> modifyLines(List<String> lines) {
+        // using old switch without break on purpose
         switch (CleanDebugConfig.hardwareMode) {
             case NONE: {
-                lines.removeIf(s ->
-                        s.startsWith("Java:") ||
-						s.startsWith("Mem:") ||
-						s.startsWith("Allocation rate:") ||
-						s.startsWith("Direct Buffers:") ||
-						s.startsWith("Allocated:") ||
-						s.startsWith("Off-Heap:") ||
-						s.startsWith("Chunk arena allocator:") ||
-						s.startsWith("Device buffer objects:") ||
-						s.startsWith("Device memory:") ||
-						s.startsWith("Staging buffer:")
-                );
+                lines.removeIf(s -> s.startsWith("Java:"));
+                lines.removeIf(s -> s.startsWith("Mem:"));
+                lines.removeIf(s -> s.startsWith("Allocation rate:"));
+                lines.removeIf(s -> s.startsWith("Allocated:"));
+                lines.removeIf(s -> s.startsWith("Off-Heap:"));
+                lines.removeIf(s -> s.startsWith("Direct Buffers:"));
             }
             case REDUCED: {
-                lines.removeIf(s -> s.startsWith("CPU:"));
+                var cpuIndex = -1;
 
-                int displayIndex = -1;
                 for (var i = 0; i < lines.size(); i++) {
-                    var string = lines.get(i);
-
-                    if (!string.startsWith("Display:")) {
-                        continue;
-                    }
-
-                    displayIndex = i - (CleanDebugConfig.hardwareMode == CleanDebugConfig.HardwareMode.REDUCED ? 1 : 2);
-                    break;
-                }
-
-                if (displayIndex < 0) {
-                    displayIndex = 0;
-                }
-
-                for (var i = 0; i < 5; i++) {
-                    if (displayIndex >= lines.size()) {
+                    if (lines.get(i).startsWith("CPU: ")) {
+                        cpuIndex = i;
                         break;
                     }
+                }
 
-                    lines.remove(displayIndex);
+                if (cpuIndex != -1) {
+                    lines.subList(cpuIndex, cpuIndex + 5).clear();
                 }
             }
         }
@@ -139,6 +97,24 @@ public abstract class DebugHudMixin {
         if (CleanDebugConfig.hideTags) {
             lines.removeIf(s -> s.startsWith("#"));
         }
+
+        if (CleanDebugConfig.hideSodium) {
+            var sodiumIndex = lines.indexOf("Sodium Renderer");
+
+            if (sodiumIndex != -1) {
+                lines.subList(sodiumIndex, sodiumIndex + 6).clear();
+            }
+        }
+
+        if (CleanDebugConfig.hideIris) {
+            lines.removeIf(s -> s.startsWith("[Iris]"));
+        }
+
+        if (CleanDebugConfig.hideDistantHorizons) {
+            lines.removeIf(s -> s.startsWith("Distant Horizons"));
+        }
+
+        return lines;
     }
 
     @Redirect(method = "getRightText", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/hit/HitResult;getType()Lnet/minecraft/util/hit/HitResult$Type;", ordinal = 1))

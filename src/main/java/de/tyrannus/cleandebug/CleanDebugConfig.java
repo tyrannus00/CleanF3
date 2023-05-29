@@ -22,6 +22,9 @@ public class CleanDebugConfig extends MidnightConfig {
     @Entry  // Only shows fluid infos when looking at a block containing a fluid
     public static boolean shyFluids = true;
 
+    @Entry  // Hides 'Press F3 + Q for help'
+    public static boolean hideHelpShortcut = true;
+
     @Comment(centered = true)
     public static final String modsCategory = "Mods";
 
@@ -42,6 +45,9 @@ public class CleanDebugConfig extends MidnightConfig {
 
     @Entry
     public static boolean hidePresenceFootsteps = false;
+
+    @Entry
+    public static boolean hideDistantHorizons = false;
 
     public enum HardwareMode {
         ALL, REDUCED, NONE

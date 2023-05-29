@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "de.tyrannus.cleandebug.mixins",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_16",
   "client": [
     "DebugHudMixin",
     "PFDebugHudMixin"

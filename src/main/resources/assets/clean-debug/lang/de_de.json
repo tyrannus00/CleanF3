@@ -14,6 +14,8 @@
   "clean-debug.midnightconfig.hideDebugHints.tooltip": "Versteckt die Hinweise für das Debug-Kuchendiagramm und die TPS & FPS Graphen.",
   "clean-debug.midnightconfig.shyFluids": "Schüchterne Flüssigkeitsinfos",
   "clean-debug.midnightconfig.shyFluids.tooltip": "Zeigt Informationen über Flüssigkeiten in einem Block nur dann, wenn er Flüssigkeiten enthält.",
+  "clean-debug.midnightconfig.hideHelpShortcut": "Verstecke Abkürzungen",
+  "clean-debug.midnightconfig.hideHelpShortcut.tooltip": "Versteckt den Hinweis 'Press F3 + Q for help'.",
 
   "clean-debug.midnightconfig.modsCategory": "Mods",
   "clean-debug.midnightconfig.hideSodium": "Verstecke Sodiums Debuginfos",
@@ -24,6 +26,7 @@
   "clean-debug.midnightconfig.hideEntityCulling": "Verstecke EntityCullings Debuginfos",
   "clean-debug.midnightconfig.hideViaFabric": "Verstecke ViaFabrics Debuginfos",
   "clean-debug.midnightconfig.hidePresenceFootsteps": "Verstecke Presence Footsteps Debuginfos",
+  "clean-debug.midnightconfig.hideDistantHorizons": "Verstecke Distant Horizons Debuginfos",
 
   "modmenu.descriptionTranslation.clean-debug": "Entfernt nutzlose Informationen aus dem Debugbildschirm.",
   "modmenu.summaryTranslation.clean-debug": "Erlaubt das Individualisieren des F3-Bildschirms."

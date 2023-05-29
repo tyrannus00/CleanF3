@@ -5,6 +5,8 @@ plugins {
 version = project.mod_version
 group = project.maven_group
 
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_16
+
 repositories {
 	maven {
 		name = 'modrinth'
@@ -18,9 +20,7 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-
 	modImplementation "maven.modrinth:midnightlib:${project.midnightlib_version}"
-	include "maven.modrinth:midnightlib:${project.midnightlib_version}"
 
 	modCompileOnly 'maven.modrinth:presence-footsteps:1.8.2'
 }
