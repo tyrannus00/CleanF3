@@ -2,8 +2,8 @@ package de.tyrannus.cleandebug.mixins;
 
 import de.tyrannus.cleandebug.CleanDebugConfig;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.DebugHud;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import org.spongepowered.asm.mixin.Final;
@@ -26,7 +26,7 @@ public class DebugHudMixin {
     private MinecraftClient client;
 
     @Inject(
-            method = "renderLeftText",
+            method = "drawLeftText",
             at = @At(
                     value = "INVOKE",
                     target = "Ljava/util/List;add(Ljava/lang/Object;)Z",
@@ -35,7 +35,7 @@ public class DebugHudMixin {
             ),
             locals = LocalCapture.CAPTURE_FAILHARD
     )
-    private void onRenderLeftText(MatrixStack matrices, CallbackInfo ci, List<String> lines) {
+    private void onRenderLeftText(DrawContext context, CallbackInfo ci, List<String> lines) {
         if (CleanDebugConfig.hideActiveRenderer) {
             lines.removeIf(s -> s.startsWith("[Fabric] Active renderer:"));
         }
@@ -66,7 +66,7 @@ public class DebugHudMixin {
         }
     }
 
-    @ModifyVariable(method = "renderRightText", at = @At(value = "STORE"))
+    @ModifyVariable(method = "drawRightText", at = @At(value = "STORE"))
     private List<String> modifyLines(List<String> lines) {
         // using old switch without break on purpose
         switch (CleanDebugConfig.hardwareMode) {
