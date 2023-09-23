@@ -31,26 +31,29 @@ public class CleanDebugConfig extends MidnightConfig {
     @Comment(centered = true)
     public static final String modsCategory = "Mods";
 
-    @Entry  // Hides sodium debug features
+    @Entry
     public static boolean hideSodium = true;
 
-    @Entry  // Hides iris debug features
-    public static boolean hideIris = false;
+    @Entry
+    public static boolean hideIris = true;
 
     @Entry
-    public static boolean hideLitematica = false;
+    public static boolean hideLitematica = true;
 
     @Entry
-    public static boolean hideEntityCulling = false;
+    public static boolean hideEntityCulling = true;
 
     @Entry
-    public static boolean hideViaFabric = false;
+    public static boolean hideViaFabric = true;
 
     @Entry
-    public static boolean hidePresenceFootsteps = false;
+    public static boolean hidePresenceFootsteps = true;
 
     @Entry
-    public static boolean hideDistantHorizons = false;
+    public static boolean hideDistantHorizons = true;
+
+    @Entry
+    public static boolean hideModernFix = true;
 
     public enum HardwareMode {
         ALL, REDUCED, NONE

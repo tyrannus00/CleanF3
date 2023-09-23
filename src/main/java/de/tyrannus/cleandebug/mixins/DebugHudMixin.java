@@ -1,5 +1,6 @@
 package de.tyrannus.cleandebug.mixins;
 
+import de.tyrannus.cleandebug.CleanDebug;
 import de.tyrannus.cleandebug.CleanDebugConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -46,6 +47,7 @@ public class DebugHudMixin {
 
         if (CleanDebugConfig.hideHelpShortcut) {
             lines.removeIf(s -> s.equals("For help: press F3 + Q"));
+            lines.removeIf(s -> s.startsWith("Debug charts:"));  // since 1.20.2
         }
 
         if (CleanDebugConfig.hideIris) {
@@ -117,6 +119,14 @@ public class DebugHudMixin {
 
         if (CleanDebugConfig.hideDistantHorizons) {
             lines.removeIf(s -> s.startsWith("Distant Horizons"));
+        }
+
+        if (CleanDebugConfig.hideModernFix) {
+            var modernFixIndex = CleanDebug.indexOfStartingWith(lines, "ModernFix");
+
+            if (modernFixIndex != -1) {
+                lines.subList(modernFixIndex, Math.min(modernFixIndex + 2, lines.size())).clear();
+            }
         }
 
         return lines;

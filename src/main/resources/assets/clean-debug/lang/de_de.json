@@ -29,6 +29,7 @@
   "clean-debug.midnightconfig.hideViaFabric": "Verstecke ViaFabrics Debuginfos",
   "clean-debug.midnightconfig.hidePresenceFootsteps": "Verstecke Presence Footsteps Debuginfos",
   "clean-debug.midnightconfig.hideDistantHorizons": "Verstecke Distant Horizons Debuginfos",
+  "clean-debug.midnightconfig.hideModernFix": "Verstecke ModernFix Debuginfos",
 
   "modmenu.descriptionTranslation.clean-debug": "Entfernt nutzlose Informationen aus dem Debugbildschirm.",
   "modmenu.summaryTranslation.clean-debug": "Erlaubt das Individualisieren des F3-Bildschirms."
