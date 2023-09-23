@@ -80,6 +80,7 @@ public class DebugHudMixin {
                 lines.removeIf(s -> s.startsWith("Allocation rate:"));
                 lines.removeIf(s -> s.startsWith("Allocated:"));
                 lines.removeIf(s -> s.startsWith("Off-Heap:"));
+                lines.remove(0);
                 lines.removeIf(s -> s.startsWith("Direct Buffers:"));
             }
             case REDUCED: {
@@ -93,7 +94,7 @@ public class DebugHudMixin {
                 }
 
                 if (cpuIndex != -1) {
-                    lines.subList(cpuIndex, cpuIndex + 5).clear();
+                    lines.subList(cpuIndex, Math.min(cpuIndex + 6, lines.size())).clear();
                 }
             }
         }
@@ -106,7 +107,7 @@ public class DebugHudMixin {
             var sodiumIndex = CleanDebug.indexOfStartingWith(lines, "§aSodium Renderer");
 
             if (sodiumIndex != -1) {
-                lines.subList(sodiumIndex, sodiumIndex + 6).clear();
+                lines.subList(sodiumIndex, Math.min(sodiumIndex + 6, lines.size())).clear();
             }
         }
 
