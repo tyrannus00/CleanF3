@@ -64,6 +64,10 @@ public class DebugHudMixin {
         if (CleanDebugConfig.hideViaFabric) {
             lines.removeIf(s -> s.startsWith("[ViaFabric]"));
         }
+
+        if (CleanDebugConfig.hideNoiseRouter) {
+            lines.removeIf(s -> s.startsWith("NoiseRouter"));
+        }
     }
 
     @ModifyVariable(method = "drawRightText", at = @At(value = "STORE"))

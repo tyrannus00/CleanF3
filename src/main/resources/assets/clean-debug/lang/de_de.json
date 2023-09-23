@@ -16,6 +16,8 @@
   "clean-debug.midnightconfig.shyFluids.tooltip": "Zeigt Informationen über Flüssigkeiten in einem Block nur dann, wenn er Flüssigkeiten enthält.",
   "clean-debug.midnightconfig.hideHelpShortcut": "Verstecke Abkürzungen",
   "clean-debug.midnightconfig.hideHelpShortcut.tooltip": "Versteckt den Hinweis 'Press F3 + Q for help'.",
+  "clean-debug.midnightconfig.hideNoiseRouter": "Verstecke NoiseRouter",
+  "clean-debug.midnightconfig.hideNoiseRouter.tooltip": "Versteckt die ziemlich lange Zeile, die Informationen über den 'NoiseRouter' zeigt.",
 
   "clean-debug.midnightconfig.modsCategory": "Mods",
   "clean-debug.midnightconfig.hideSodium": "Verstecke Sodiums Debuginfos",

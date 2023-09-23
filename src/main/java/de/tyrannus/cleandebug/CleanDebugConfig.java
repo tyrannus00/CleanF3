@@ -25,6 +25,9 @@ public class CleanDebugConfig extends MidnightConfig {
     @Entry  // Hides 'Press F3 + Q for help'
     public static boolean hideHelpShortcut = true;
 
+    @Entry  // Hides the long noise router info
+    public static boolean hideNoiseRouter = true;
+
     @Comment(centered = true)
     public static final String modsCategory = "Mods";
 

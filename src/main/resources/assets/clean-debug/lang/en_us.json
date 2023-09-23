@@ -16,6 +16,8 @@
   "clean-debug.midnightconfig.shyFluids.tooltip": "Will only show fluid information about a block when the block actually contains one.",
   "clean-debug.midnightconfig.hideHelpShortcut": "Hide help shortcut",
   "clean-debug.midnightconfig.hideHelpShortcut.tooltip": "Hides the shortcut 'Press F3 + Q for help'.",
+  "clean-debug.midnightconfig.hideNoiseRouter": "Hide noise router",
+  "clean-debug.midnightconfig.hideNoiseRouter.tooltip": "Hides the very long line displaying information about the noise router.",
 
   "clean-debug.midnightconfig.modsCategory": "Mods",
   "clean-debug.midnightconfig.hideSodium": "Hide Sodium's debug info",
