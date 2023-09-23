@@ -103,7 +103,7 @@ public class DebugHudMixin {
         }
 
         if (CleanDebugConfig.hideSodium) {
-            var sodiumIndex = lines.indexOf("Sodium Renderer");
+            var sodiumIndex = CleanDebug.indexOfStartingWith(lines, "§aSodium Renderer");
 
             if (sodiumIndex != -1) {
                 lines.subList(sodiumIndex, sodiumIndex + 6).clear();
