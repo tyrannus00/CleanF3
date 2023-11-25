@@ -11,6 +11,7 @@
     "sources": "https://github.com/tyrannus00/CleanF3",
     "issues": "https://github.com/tyrannus00/CleanF3/issues"
   },
+  "license": "MIT",
   "icon": "assets/clean-debug/icon.png",
   "environment": "client",
   "entrypoints": {
