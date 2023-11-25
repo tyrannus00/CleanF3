@@ -2,8 +2,8 @@ plugins {
 	id "fabric-loom" version "$loom_version"
 }
 
-version = project.mod_version
-group = project.maven_group
+version = mod_version
+group = maven_group
 
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
 
@@ -19,7 +19,7 @@ dependencies {
 	mappings "net.fabricmc:yarn:$yarn_mappings:v2"
 	modImplementation "net.fabricmc:fabric-loader:$loader_version"
 
-	modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_api_version"
+	modImplementation(fabricApi.module("fabric-resource-loader-v0", fabric_api_version))
 	modImplementation "maven.modrinth:midnightlib:$midnightlib_version"
 
 	modCompileOnly "maven.modrinth:presence-footsteps:$presence_footsteps_version"
