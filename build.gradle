@@ -5,8 +5,6 @@ plugins {
 version = mod_version
 group = maven_group
 
-sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
-
 repositories {
 	maven {
 		name = 'modrinth'
@@ -34,7 +32,5 @@ processResources {
 }
 
 jar {
-	from("LICENSE") {
-		rename { "${it}_${archives_base_name}"}
-	}
+	from "${rootProject.projectDir}/LICENSE.txt"
 }
