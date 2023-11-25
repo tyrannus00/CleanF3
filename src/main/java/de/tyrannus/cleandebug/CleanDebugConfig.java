@@ -8,54 +8,50 @@ public class CleanDebugConfig extends MidnightConfig {
     public static final String vanillaCategory = "Vanilla";
 
     @Entry  // Whether to display hardware information or not
-    public static HardwareMode hardwareMode = HardwareMode.REDUCED;
+    public static final HardwareMode hardwareMode = HardwareMode.REDUCED;
 
     @Entry  // Hides the hints for the debug pie / tps graph
-    public static boolean hideActiveRenderer = true;
+    public static final boolean hideActiveRenderer = true;
 
     @Entry  // Hides the tags of the block / fluid you are looking at
-    public static boolean hideTags = true;
+    public static final boolean hideTags = true;
 
     @Entry  // Hides the hints for the debug pie / tps graph
-    public static boolean hideDebugHints = true;
+    public static final boolean hideDebugHints = true;
 
     @Entry  // Only shows fluid infos when looking at a block containing a fluid
-    public static boolean shyFluids = true;
+    public static final boolean shyFluids = true;
 
     @Entry  // Hides 'Press F3 + Q for help'
-    public static boolean hideHelpShortcut = true;
+    public static final boolean hideHelpShortcut = true;
 
     @Entry  // Hides the long noise router info
-    public static boolean hideNoiseRouter = true;
+    public static final boolean hideNoiseRouter = true;
 
     @Comment(centered = true)
     public static final String modsCategory = "Mods";
 
     @Entry
-    public static boolean hideSodium = true;
+    public static final boolean hideSodium = true;
 
     @Entry
-    public static boolean hideIris = true;
+    public static final boolean hideIris = true;
 
     @Entry
-    public static boolean hideLitematica = true;
+    public static final boolean hideLitematica = true;
 
     @Entry
-    public static boolean hideEntityCulling = true;
+    public static final boolean hideEntityCulling = true;
 
     @Entry
-    public static boolean hideViaFabric = true;
+    public static final boolean hideViaFabric = true;
 
     @Entry
-    public static boolean hidePresenceFootsteps = true;
+    public static final boolean hidePresenceFootsteps = true;
 
     @Entry
-    public static boolean hideDistantHorizons = true;
+    public static final boolean hideDistantHorizons = true;
 
     @Entry
-    public static boolean hideModernFix = true;
-
-    public enum HardwareMode {
-        ALL, REDUCED, NONE
-    }
+    public static final boolean hideModernFix = true;
 }

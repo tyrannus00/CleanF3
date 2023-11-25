@@ -10,6 +10,11 @@ import java.util.List;
 
 public class CleanDebug implements ClientModInitializer {
 
+    @Override
+    public void onInitializeClient() {
+        MidnightConfig.init("clean-debug", CleanDebugConfig.class);
+    }
+
     public static void modifyLeftLines(List<String> lines) {
         if (CleanDebugConfig.hideActiveRenderer) {
             lines.removeIf(s -> s.startsWith("[Fabric] Active renderer:"));
@@ -47,7 +52,7 @@ public class CleanDebug implements ClientModInitializer {
     }
 
     public static void modifyRightLines(List<String> lines) {
-        if (CleanDebugConfig.hardwareMode == CleanDebugConfig.HardwareMode.NONE) {
+        if (CleanDebugConfig.hardwareMode == HardwareMode.NONE) {
             lines.removeIf(s -> s.startsWith("Java:"));
             lines.removeIf(s -> s.startsWith("Mem:"));
             lines.removeIf(s -> s.startsWith("Allocation rate:"));
@@ -57,7 +62,7 @@ public class CleanDebug implements ClientModInitializer {
             lines.removeIf(s -> s.startsWith("Direct Buffers:"));
         }
 
-        if (CleanDebugConfig.hardwareMode != CleanDebugConfig.HardwareMode.ALL) {
+        if (CleanDebugConfig.hardwareMode != HardwareMode.ALL) {
             var cpuIndex = indexOfStartingWith(lines, "CPU: ", false);
 
             if (cpuIndex != -1) {
@@ -122,10 +127,5 @@ public class CleanDebug implements ClientModInitializer {
         }
 
         return -1;
-    }
-
-    @Override
-    public void onInitializeClient() {
-        MidnightConfig.init("clean-debug", CleanDebugConfig.class);
     }
 }
