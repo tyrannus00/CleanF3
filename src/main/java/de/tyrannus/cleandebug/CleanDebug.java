@@ -7,6 +7,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 
 import java.util.List;
+import java.util.Objects;
 
 public class CleanDebug implements ClientModInitializer {
 
@@ -16,6 +17,8 @@ public class CleanDebug implements ClientModInitializer {
     }
 
     public static void modifyLeftLines(List<String> lines) {
+        lines.removeIf(Objects::isNull);
+
         if (CleanDebugConfig.hideActiveRenderer) {
             lines.removeIf(s -> s.startsWith("[Fabric] Active renderer:"));
         }
