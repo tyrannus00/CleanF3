@@ -54,4 +54,7 @@ public class CleanDebugConfig extends MidnightConfig {
 
     @Entry
     public static boolean hideModernFix = true;
+
+    @Entry
+    public static boolean hideJourneyMap = true;
 }

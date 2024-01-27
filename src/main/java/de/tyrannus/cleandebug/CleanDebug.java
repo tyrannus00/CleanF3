@@ -52,6 +52,10 @@ public class CleanDebug implements ClientModInitializer {
         if (CleanDebugConfig.hideNoiseRouter) {
             lines.removeIf(s -> s.startsWith("NoiseRouter"));
         }
+
+        if (CleanDebugConfig.hideJourneyMap) {
+            lines.removeIf(s -> s.startsWith("§b[JM]"));
+        }
     }
 
     public static void modifyRightLines(List<String> lines) {
