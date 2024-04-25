@@ -31,7 +31,7 @@
   "clean-debug.midnightconfig.hideDistantHorizons": "Cache les infos de débogage de Distant Horizons.",
   "clean-debug.midnightconfig.hideModernFix": "Cache les infos de débogage de ModernFix",
   "clean-debug.midnightconfig.hideJourneyMap": "Cache les infos de débogage de JourneyMap",
-  "clean-debug.midnightconfig.hideModernFix": "Cache les infos de débogage de LambDynamicLights",
+  "clean-debug.midnightconfig.hideLambDynamicLights": "Cache les infos de débogage de LambDynamicLights",
 
   "modmenu.descriptionTranslation.clean-debug": "Enlève les informations inutiles de l’écran de débogage.",
   "modmenu.summaryTranslation.clean-debug": "Permet de customiser ce que vous voulez voir sur le menu F3."
