@@ -34,6 +34,8 @@
   "clean-debug.midnightconfig.hideModernFix": "Verstecke ModernFix Debuginfos",
   "clean-debug.midnightconfig.hideJourneyMap": "Verstecke JourneyMap Debuginfos",
   "clean-debug.midnightconfig.hideLambDynamicLights": "Verstecke LambDynamicLights Debuginfos",
+  "clean-debug.midnightconfig.hideDynamicFps": "Verstecke DynamicFps' Debuginfos",
+  "clean-debug.midnightconfig.hideDynamicFps.tooltip": "DynamicFps zeigt nur dann extra Debuginfos an, während das Spiel nicht fokussiert ist.",
 
   "modmenu.descriptionTranslation.clean-debug": "Entfernt nutzlose Informationen aus dem Debugbildschirm.",
   "modmenu.summaryTranslation.clean-debug": "Erlaubt das Individualisieren des F3-Bildschirms."

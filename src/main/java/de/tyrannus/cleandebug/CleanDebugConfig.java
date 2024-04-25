@@ -63,4 +63,7 @@ public class CleanDebugConfig extends MidnightConfig {
 
     @Entry
     public static boolean hideLambDynamicLights = true;
+
+    @Entry
+    public static boolean hideDynamicFps = true;
 }
