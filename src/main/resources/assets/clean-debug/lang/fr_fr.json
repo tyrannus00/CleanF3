@@ -30,6 +30,7 @@
   "clean-debug.midnightconfig.hidePresenceFootsteps": "Cache Hide Presence Footstep's debug info",
   "clean-debug.midnightconfig.hideDistantHorizons": "Cache les infos de débogage de Distant Horizons.",
   "clean-debug.midnightconfig.hideModernFix": "Cache les infos de débogage de ModernFix",
+  "clean-debug.midnightconfig.hideJourneyMap": "Cache les infos de débogage de JourneyMap",
   "clean-debug.midnightconfig.hideModernFix": "Cache les infos de débogage de LambDynamicLights",
 
   "modmenu.descriptionTranslation.clean-debug": "Enlève les informations inutiles de l’écran de débogage.",
