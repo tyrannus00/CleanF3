@@ -57,8 +57,26 @@ public class CleanDebug implements ClientModInitializer {
             lines.removeIf(s -> s.startsWith("§b[JM]"));
         }
 
+        if (CleanDebugConfig.hideDynamicFps) {
+            lines.removeIf(s -> s.startsWith("§c[Dynamic FPS] "));
+        }
+
         if (CleanDebugConfig.hideLambDynamicLights) {
             lines.removeIf(s -> s.startsWith("Dynamic Light Sources: "));
+        }
+
+        if (CleanDebugConfig.onlyShowNecessary) {
+            lines.removeIf(s -> s.startsWith("Chunks["));
+            lines.removeIf(s -> s.startsWith("Block: "));
+            lines.removeIf(s -> s.startsWith("Chunk: "));
+            lines.removeIf(s -> s.startsWith("CH S:"));
+            lines.removeIf(s -> s.startsWith("SH S:"));
+
+            var idx = indexOfStartingWith(lines,"Local Difficulty:", false);
+
+            if (idx != -1) {
+                lines.subList(idx + 1, idx + 4).clear();
+            }
         }
     }
 

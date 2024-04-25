@@ -28,6 +28,9 @@ public class CleanDebugConfig extends MidnightConfig {
     @Entry  // Hides the long noise router info
     public static boolean hideNoiseRouter = true;
 
+    @Entry
+    public static boolean onlyShowNecessary = false;
+
     @Comment(centered = true)
     public static final String modsCategory = "Mods";
 

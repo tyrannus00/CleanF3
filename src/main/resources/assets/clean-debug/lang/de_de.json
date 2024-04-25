@@ -18,6 +18,8 @@
   "clean-debug.midnightconfig.hideHelpShortcut.tooltip": "Versteckt den Hinweis 'Press F3 + Q for help'.",
   "clean-debug.midnightconfig.hideNoiseRouter": "Verstecke NoiseRouter",
   "clean-debug.midnightconfig.hideNoiseRouter.tooltip": "Versteckt die ziemlich lange Zeile, die Informationen über den 'NoiseRouter' zeigt.",
+  "clean-debug.midnightconfig.onlyShowNecessary": "Zeige nur das Nötigste",
+  "clean-debug.midnightconfig.onlyShowNecessary.tooltip": "Verbirgt vieles auf der linken Seite des F3-Bildschirms und lässt nur Sachen übrig, die für die meisten notwendig sind.",
 
   "clean-debug.midnightconfig.modsCategory": "Mods",
   "clean-debug.midnightconfig.hideSodium": "Verstecke Sodiums Debuginfos",
