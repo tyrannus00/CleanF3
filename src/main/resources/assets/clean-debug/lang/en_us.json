@@ -30,6 +30,7 @@
   "clean-debug.midnightconfig.hidePresenceFootsteps": "Hide Presence Footstep's debug info",
   "clean-debug.midnightconfig.hideDistantHorizons": "Hide Distant Horizons' debug info",
   "clean-debug.midnightconfig.hideModernFix": "Hide ModernFix's debug info",
+  "clean-debug.midnightconfig.hideLambDynamicLights": "Hide LambDynamicLights' debug info",
 
   "modmenu.descriptionTranslation.clean-debug": "Removes useless information from the debug screen.",
   "modmenu.summaryTranslation.clean-debug": "Allows you to customize what you see on the F3 screen."

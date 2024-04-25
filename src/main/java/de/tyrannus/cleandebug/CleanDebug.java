@@ -52,6 +52,10 @@ public class CleanDebug implements ClientModInitializer {
         if (CleanDebugConfig.hideNoiseRouter) {
             lines.removeIf(s -> s.startsWith("NoiseRouter"));
         }
+
+        if (CleanDebugConfig.hideLambDynamicLights) {
+            lines.removeIf(s -> s.startsWith("Dynamic Light Sources: "));
+        }
     }
 
     public static void modifyRightLines(List<String> lines) {
