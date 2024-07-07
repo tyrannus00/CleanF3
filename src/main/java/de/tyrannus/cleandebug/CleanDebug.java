@@ -116,11 +116,16 @@ public class CleanDebug implements ClientModInitializer {
         }
 
         if (CleanDebugConfig.hideDistantHorizons) {
-            var lodModIndexStart = indexOfStartingWith(lines, "Distant Horizons version: ", false);
-            var lodModIndexEnd = indexOfStartingWith(lines, "ON_LOADED:", true);
+            var lodModIndexStart = indexOfStartingWith(lines, "Distant Horizons: ", false);
 
-            if (lodModIndexStart != -1 && lodModIndexEnd != -1) {
-                lines.subList(lodModIndexStart - 1, lodModIndexEnd + 1).clear();    // Adds empty line before
+            if (lodModIndexStart != -1) {
+                var fixedLines = 10;
+                var endIndex = indexOfStartingWith(lines.subList(lodModIndexStart + fixedLines, lines.size()), "", false);
+
+                lines.subList(
+                        lodModIndexStart - (lodModIndexStart == 0 ? 0 : 1),
+                        endIndex == -1 ? lines.size() : lodModIndexStart + fixedLines + endIndex
+                ).clear();
             }
         }
 
@@ -135,7 +140,6 @@ public class CleanDebug implements ClientModInitializer {
         while (!lines.isEmpty() && lines.get(0).isEmpty()) {
             lines.remove(0);
         }
-
     }
 
     public static HitResult.Type getFluidHitResultType(HitResult result, World world) {
@@ -149,8 +153,13 @@ public class CleanDebug implements ClientModInitializer {
     private static int indexOfStartingWith(List<String> list, String startingWith, boolean trim) {
         for (var i = 0; i < list.size(); i++) {
             var string = list.get(i);
+            var toCheck = (trim ? string.trim() : string);
 
-            if ((trim ? string.trim() : string).startsWith(startingWith)) {
+            if (startingWith.isEmpty()) {
+                if (toCheck.isEmpty()) {
+                    return i;
+                }
+            } else if (toCheck.startsWith(startingWith)) {
                 return i;
             }
         }
