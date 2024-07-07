@@ -16,129 +16,129 @@ public class CleanDebug implements ClientModInitializer {
         MidnightConfig.init("clean-debug", CleanDebugConfig.class);
     }
 
-    public static void modifyLeftLines(List<String> lines) {
-        lines.removeIf(Objects::isNull);
+    public static void modifyLeftText(List<String> text) {
+        text.removeIf(Objects::isNull);    // Some mods are goofy goobers and add null
 
         if (CleanDebugConfig.hideActiveRenderer) {
-            lines.removeIf(s -> s.startsWith("[Fabric] Active renderer:"));
+            text.removeIf(s -> s.startsWith("[Fabric] Active renderer:"));
         }
 
         if (CleanDebugConfig.hideDebugHints) {
-            lines.removeIf(s -> s.contains("Debug: Pie"));
+            text.removeIf(s -> s.contains("Debug: Pie"));
         }
 
         if (CleanDebugConfig.hideHelpShortcut) {
-            lines.removeIf(s -> s.equals("For help: press F3 + Q"));
-            lines.removeIf(s -> s.startsWith("Debug charts:"));  // since 1.20.2
+            text.removeIf(s -> s.equals("For help: press F3 + Q"));
+            text.removeIf(s -> s.startsWith("Debug charts:"));  // since 1.20.2
         }
 
         if (CleanDebugConfig.hideNoiseRouter) {
-            lines.removeIf(s -> s.startsWith("NoiseRouter"));
+            text.removeIf(s -> s.startsWith("NoiseRouter"));
         }
 
         if (CleanDebugConfig.onlyShowNecessary) {
-            lines.removeIf(s -> s.startsWith("Chunks["));
-            lines.removeIf(s -> s.startsWith("Block: "));
-            lines.removeIf(s -> s.startsWith("Chunk: "));
-            lines.removeIf(s -> s.startsWith("CH S:"));
-            lines.removeIf(s -> s.startsWith("SH S:"));
+            text.removeIf(s -> s.startsWith("Chunks["));
+            text.removeIf(s -> s.startsWith("Block: "));
+            text.removeIf(s -> s.startsWith("Chunk: "));
+            text.removeIf(s -> s.startsWith("CH S:"));
+            text.removeIf(s -> s.startsWith("SH S:"));
 
-            var idx = indexOfStartingWith(lines,"Local Difficulty:", false);
+            var idx = indexOfStartingWith(text,"Local Difficulty:", false);
 
             if (idx != -1) {
-                lines.subList(idx + 1, idx + 4).clear();
+                text.subList(idx + 1, idx + 4).clear();
             }
         }
 
         if (CleanDebugConfig.hideIris) {
-            lines.removeIf(s -> s.startsWith("[Iris]"));
-            lines.removeIf(s -> s.startsWith("[Entity Batching]"));
+            text.removeIf(s -> s.startsWith("[Iris]"));
+            text.removeIf(s -> s.startsWith("[Entity Batching]"));
         }
 
         if (CleanDebugConfig.hideLitematica) {
-            lines.removeIf(s -> s.startsWith("§6[Litematica]§r"));
+            text.removeIf(s -> s.startsWith("§6[Litematica]§r"));
         }
 
         if (CleanDebugConfig.hideEntityCulling) {
-            lines.removeIf(s -> s.startsWith("[Culling]"));
+            text.removeIf(s -> s.startsWith("[Culling]"));
         }
 
         if (CleanDebugConfig.hideViaFabric) {
-            lines.removeIf(s -> s.startsWith("[ViaFabric]"));
+            text.removeIf(s -> s.startsWith("[ViaFabric]"));
         }
 
         if (CleanDebugConfig.hideJourneyMap) {
-            lines.removeIf(s -> s.startsWith("§b[JM]"));
+            text.removeIf(s -> s.startsWith("§b[JM]"));
         }
 
         if (CleanDebugConfig.hideLambDynamicLights) {
-            lines.removeIf(s -> s.startsWith("Dynamic Light Sources: "));
+            text.removeIf(s -> s.startsWith("Dynamic Light Sources: "));
         }
 
         if (CleanDebugConfig.hideDynamicFps) {
-            lines.removeIf(s -> s.startsWith("§c[Dynamic FPS] "));
+            text.removeIf(s -> s.startsWith("§c[Dynamic FPS] "));
         }
     }
 
-    public static void modifyRightLines(List<String> lines) {
+    public static void modifyRightText(List<String> text) {
         if (CleanDebugConfig.hardwareMode == HardwareMode.NONE) {
-            lines.removeIf(s -> s.startsWith("Java:"));
-            lines.removeIf(s -> s.startsWith("Mem:"));
-            lines.removeIf(s -> s.startsWith("Allocation rate:"));
-            lines.removeIf(s -> s.startsWith("Allocated:"));
-            lines.removeIf(s -> s.startsWith("Off-Heap:"));
-            lines.remove(0);
-            lines.removeIf(s -> s.startsWith("Direct Buffers:"));
+            text.removeIf(s -> s.startsWith("Java:"));
+            text.removeIf(s -> s.startsWith("Mem:"));
+            text.removeIf(s -> s.startsWith("Allocation rate:"));
+            text.removeIf(s -> s.startsWith("Allocated:"));
+            text.removeIf(s -> s.startsWith("Off-Heap:"));
+            text.remove(0);
+            text.removeIf(s -> s.startsWith("Direct Buffers:"));
         }
 
         if (CleanDebugConfig.hardwareMode != HardwareMode.ALL) {
-            var cpuIndex = indexOfStartingWith(lines, "CPU: ", false);
+            var cpuIndex = indexOfStartingWith(text, "CPU: ", false);
 
             if (cpuIndex != -1) {
-                lines.subList(cpuIndex, Math.min(cpuIndex + 6, lines.size())).clear();
+                text.subList(cpuIndex, Math.min(cpuIndex + 6, text.size())).clear();
             }
         }
 
         if (CleanDebugConfig.hideTags) {
-            lines.removeIf(s -> s.startsWith("#"));
+            text.removeIf(s -> s.startsWith("#"));
         }
 
         if (CleanDebugConfig.hideSodium) {
-            var sodiumIndex = indexOfStartingWith(lines, "§aSodium Renderer", false);
+            var sodiumIndex = indexOfStartingWith(text, "§aSodium Renderer", false);
 
             if (sodiumIndex != -1) {
-                lines.subList(sodiumIndex, Math.min(sodiumIndex + 6, lines.size())).clear();
+                text.subList(sodiumIndex, Math.min(sodiumIndex + 6, text.size())).clear();
             }
         }
 
         if (CleanDebugConfig.hideIris) {
-            lines.removeIf(s -> s.startsWith("[Iris]"));
+            text.removeIf(s -> s.startsWith("[Iris]"));
         }
 
         if (CleanDebugConfig.hideDistantHorizons) {
-            var lodModIndexStart = indexOfStartingWith(lines, "Distant Horizons: ", false);
+            var lodModIndexStart = indexOfStartingWith(text, "Distant Horizons: ", false);
 
             if (lodModIndexStart != -1) {
                 var fixedLines = 10;
-                var endIndex = indexOfStartingWith(lines.subList(lodModIndexStart + fixedLines, lines.size()), "", false);
+                var endIndex = indexOfStartingWith(text.subList(lodModIndexStart + fixedLines, text.size()), "", false);
 
-                lines.subList(
+                text.subList(
                         lodModIndexStart - (lodModIndexStart == 0 ? 0 : 1),
-                        endIndex == -1 ? lines.size() : lodModIndexStart + fixedLines + endIndex
+                        endIndex == -1 ? text.size() : lodModIndexStart + fixedLines + endIndex
                 ).clear();
             }
         }
 
         if (CleanDebugConfig.hideModernFix) {
-            var modernFixIndex = indexOfStartingWith(lines, "ModernFix", false);
+            var modernFixIndex = indexOfStartingWith(text, "ModernFix", false);
 
             if (modernFixIndex != -1) {
-                lines.subList(modernFixIndex, Math.min(modernFixIndex + 2, lines.size())).clear();
+                text.subList(modernFixIndex, Math.min(modernFixIndex + 2, text.size())).clear();
             }
         }
 
-        while (!lines.isEmpty() && lines.get(0).isEmpty()) {
-            lines.remove(0);
+        while (!text.isEmpty() && text.get(0).isEmpty()) {
+            text.remove(0);
         }
     }
 

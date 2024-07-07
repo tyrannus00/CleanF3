@@ -1,17 +1,15 @@
-package de.tyrannus.cleandebug.mixins;
+package de.tyrannus.cleandebug.mixin;
 
 import de.tyrannus.cleandebug.CleanDebugConfig;
 import eu.ha3.presencefootsteps.PFDebugHud;
 import net.minecraft.util.hit.HitResult;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
-@Pseudo
 @Mixin(value = PFDebugHud.class, remap = false)
 public class PFDebugHudMixin {
 
