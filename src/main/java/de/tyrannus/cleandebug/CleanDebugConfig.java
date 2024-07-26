@@ -66,4 +66,7 @@ public class CleanDebugConfig extends MidnightConfig {
 
     @Entry
     public static boolean hideDynamicFps = true;
+
+    @Entry
+    public static boolean hideCaveDust = true;
 }

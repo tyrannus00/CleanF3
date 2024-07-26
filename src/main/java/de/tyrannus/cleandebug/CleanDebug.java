@@ -137,6 +137,10 @@ public class CleanDebug implements ClientModInitializer {
             }
         }
 
+        if (CleanDebugConfig.hideCaveDust) {
+            text.removeIf(s -> s.startsWith("Particle amount evaluated: "));
+        }
+
         while (!text.isEmpty() && text.get(0).isEmpty()) {
             text.remove(0);
         }
