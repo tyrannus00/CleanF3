@@ -103,11 +103,17 @@ public class CleanDebug implements ClientModInitializer {
             text.removeIf(s -> s.startsWith("#"));
         }
 
+        // Mods
+
         if (CleanDebugConfig.hideSodium) {
             var sodiumIndex = indexOfStartingWith(text, "§aSodium Renderer", false);
 
             if (sodiumIndex != -1) {
                 text.subList(sodiumIndex, Math.min(sodiumIndex + 7, text.size())).clear();
+
+                if (sodiumIndex > 0 && text.get(sodiumIndex - 1).isEmpty()) {
+                    text.remove(sodiumIndex - 1);
+                }
             }
         }
 
