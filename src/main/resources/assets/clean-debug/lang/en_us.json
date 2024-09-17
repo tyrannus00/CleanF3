@@ -36,6 +36,7 @@
   "clean-debug.midnightconfig.hideLambDynamicLights": "Hide LambDynamicLights' debug info",
   "clean-debug.midnightconfig.hideDynamicFps": "Hide DynamicFps' debug info",
   "clean-debug.midnightconfig.hideDynamicFps.tooltip": "DynamicFps adds debug info only while the game is unfocused.",
+  "clean-debug.midnightconfig.hideCaveDust": "Hide Cave Dust's debug info",
 
   "modmenu.descriptionTranslation.clean-debug": "Removes useless information from the debug screen.",
   "modmenu.summaryTranslation.clean-debug": "Allows you to customize what you see on the F3 screen."
