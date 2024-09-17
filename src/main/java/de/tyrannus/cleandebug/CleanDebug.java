@@ -107,7 +107,7 @@ public class CleanDebug implements ClientModInitializer {
             var sodiumIndex = indexOfStartingWith(text, "§aSodium Renderer", false);
 
             if (sodiumIndex != -1) {
-                text.subList(sodiumIndex, Math.min(sodiumIndex + 6, text.size())).clear();
+                text.subList(sodiumIndex, Math.min(sodiumIndex + 7, text.size())).clear();
             }
         }
 
