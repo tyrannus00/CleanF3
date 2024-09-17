@@ -138,7 +138,19 @@ public class CleanDebug implements ClientModInitializer {
         }
 
         if (CleanDebugConfig.hideCaveDust) {
-            text.removeIf(s -> s.startsWith("Particle amount evaluated: "));
+            var caveDustIndex = indexOfStartingWith(text, "Particle amount evaluated: ", false);
+
+            if (caveDustIndex != -1) {
+                text.remove(caveDustIndex);
+
+                if (caveDustIndex > 0 && text.get(caveDustIndex - 1).isEmpty()) {
+                    text.remove(caveDustIndex - 1); // Blank line before
+                }
+
+                if (caveDustIndex < text.size() && text.get(caveDustIndex).isEmpty()) {
+                    text.remove(caveDustIndex); // Blank line after
+                }
+            }
         }
 
         while (!text.isEmpty() && text.get(0).isEmpty()) {
