@@ -37,17 +37,16 @@ public class CleanDebug implements ClientModInitializer {
         }
 
         if (CleanDebugConfig.onlyShowNecessary) {
-            text.removeIf(s -> s.startsWith("Chunks["));
-            text.removeIf(s -> s.startsWith("Block: "));
-            text.removeIf(s -> s.startsWith("Chunk: "));
-            text.removeIf(s -> s.startsWith("CH S:"));
-            text.removeIf(s -> s.startsWith("SH S:"));
-
-            var idx = indexOfStartingWith(text,"Local Difficulty:", false);
-
-            if (idx != -1) {
-                text.subList(idx + 1, idx + 4).clear();
-            }
+            text.removeIf(
+                    s -> s.startsWith("Chunks[") ||
+                    s.startsWith("Block: ") ||
+                    s.startsWith("Chunk: ") ||
+                    s.startsWith("CH S:") ||
+                    s.startsWith("SH S:") ||
+                    s.startsWith("SC: ") ||
+                    s.startsWith("Sounds: ") ||
+                    s.startsWith("Blending: ")  // 1.21
+            );
         }
 
         if (CleanDebugConfig.hideIris) {
