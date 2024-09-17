@@ -34,7 +34,14 @@ public abstract class DebugHudMixin {
         }
     }
 
-    @Redirect(method = "getRightText", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/hit/HitResult;getType()Lnet/minecraft/util/hit/HitResult$Type;", ordinal = 1))
+    @Redirect(
+            method = "getRightText",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/util/hit/HitResult;getType()Lnet/minecraft/util/hit/HitResult$Type;",
+                    ordinal = 1
+            )
+    )
     protected final HitResult.Type changeFluidHitType(HitResult result) {
         return CleanDebug.getFluidHitResultType(result, client.world);
     }

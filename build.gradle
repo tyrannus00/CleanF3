@@ -7,8 +7,8 @@ group = project.maven_group
 
 repositories {
 	maven {
-		name = 'modrinth'
-		url = 'https://api.modrinth.com/maven'
+		name = "modrinth"
+		url = "https://api.modrinth.com/maven"
 	}
 }
 
@@ -36,5 +36,5 @@ processResources {
 }
 
 jar {
-	from "${rootProject.projectDir}/LICENSE.txt"
+	from("${rootProject.projectDir}/LICENSE.txt")
 }
