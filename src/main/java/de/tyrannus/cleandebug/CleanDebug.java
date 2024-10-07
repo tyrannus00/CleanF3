@@ -116,6 +116,18 @@ public class CleanDebug implements ClientModInitializer {
             }
         }
 
+        if (CleanDebugConfig.hideEmbeddium) {
+            var embeddiumIndex = indexOfStartingWith(text, "§aEmbeddium Renderer", false);
+
+            if (embeddiumIndex != -1) {
+                text.subList(embeddiumIndex, Math.min(embeddiumIndex + 8, text.size())).clear();
+
+                if (embeddiumIndex > 0 && text.get(embeddiumIndex - 1).isEmpty()) {
+                    text.remove(embeddiumIndex - 1);
+                }
+            }
+        }
+
         if (CleanDebugConfig.hideIris) {
             text.removeIf(s -> s.startsWith("[Iris]"));
         }
