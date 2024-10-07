@@ -24,6 +24,8 @@
   "clean-debug.midnightconfig.modsCategory": "Mods",
   "clean-debug.midnightconfig.hideSodium": "Hide Sodium's debug info",
   "clean-debug.midnightconfig.hideSodium.tooltip": "Hides some of the information Sodium adds to the debug screen.",
+  "clean-debug.midnightconfig.hideEmbeddium": "Hide Embeddium's debug info",
+  "clean-debug.midnightconfig.hideEmbeddium.tooltip": "Hides some of the information Embeddium adds to the debug screen.",
   "clean-debug.midnightconfig.hideIris": "Hide Iris' debug info",
   "clean-debug.midnightconfig.hideIris.tooltip": "Hides the information Iris adds to the debug screen.",
   "clean-debug.midnightconfig.hideLitematica": "Hide Litematica's debug info",

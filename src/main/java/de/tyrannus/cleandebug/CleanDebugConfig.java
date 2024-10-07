@@ -38,6 +38,9 @@ public class CleanDebugConfig extends MidnightConfig {
     public static boolean hideSodium = true;
 
     @Entry
+    public static boolean hideEmbeddium = true;
+    
+    @Entry
     public static boolean hideIris = true;
 
     @Entry
