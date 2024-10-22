@@ -20,6 +20,8 @@
   "clean-debug.midnightconfig.hideNoiseRouter.tooltip": "Versteckt die ziemlich lange Zeile, die Informationen über den 'NoiseRouter' zeigt.",
   "clean-debug.midnightconfig.onlyShowNecessary": "Zeige nur das Nötigste",
   "clean-debug.midnightconfig.onlyShowNecessary.tooltip": "Verbirgt vieles auf der linken Seite des F3-Bildschirms und lässt nur Sachen übrig, die für die meisten notwendig sind.",
+  "clean-debug.midnightconfig.hideCoordinates": "Verstecke Koordinaten",
+  "clean-debug.midnightconfig.hideCoordinates.tooltip": "Verhindert, dass Koordinaten auf dem F3-Bildschirm gezeigt werden. Die Richtung, in du guckst, ist weiterhin sichtbar.",
 
   "clean-debug.midnightconfig.modsCategory": "Mods",
   "clean-debug.midnightconfig.hideSodium": "Verstecke Sodiums Debuginfos",

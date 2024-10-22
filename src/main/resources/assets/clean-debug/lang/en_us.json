@@ -20,6 +20,8 @@
   "clean-debug.midnightconfig.hideNoiseRouter.tooltip": "Hides the very long line displaying information about the noise router.",
   "clean-debug.midnightconfig.onlyShowNecessary": "Show only necessary",
   "clean-debug.midnightconfig.onlyShowNecessary.tooltip": "Hides a lot of stuff from the left side of the debug screen and only leaves whats necessary to most people.",
+  "clean-debug.midnightconfig.hideCoordinates": "Hide Coordinates",
+  "clean-debug.midnightconfig.hideCoordinates.tooltip": "Prevents coordinates from being visible on the debug screen. Doesn't hide in which direction you are looking.",
 
   "clean-debug.midnightconfig.modsCategory": "Mods",
   "clean-debug.midnightconfig.hideSodium": "Hide Sodium's debug info",

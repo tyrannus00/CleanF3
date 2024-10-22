@@ -31,6 +31,9 @@ public class CleanDebugConfig extends MidnightConfig {
     @Entry
     public static boolean onlyShowNecessary = false;
 
+    @Entry
+    public static boolean hideCoordinates = false;
+
     @Comment(centered = true)
     public static final String modsCategory = "Mods";
 

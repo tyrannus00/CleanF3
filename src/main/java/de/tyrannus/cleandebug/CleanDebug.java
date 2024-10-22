@@ -2,6 +2,7 @@ package de.tyrannus.cleandebug;
 
 import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
@@ -77,6 +78,18 @@ public class CleanDebug implements ClientModInitializer {
         if (CleanDebugConfig.hideDynamicFps) {
             text.removeIf(s -> s.startsWith("§c[Dynamic FPS] "));
         }
+
+        if (CleanDebugConfig.hideCoordinates) {
+            var coordIndex = indexOfStartingWith(text, "XYZ: ");
+
+            if (coordIndex != -1) {
+                text.remove(coordIndex);
+                text.add(coordIndex, "XYZ: Hidden by CleanF3");
+
+                text.removeIf(s -> s.startsWith("Block: "));
+                text.removeIf(s -> s.startsWith("Chunk: "));
+            }
+        }
     }
 
     public static void modifyRightText(List<String> text) {
@@ -91,7 +104,7 @@ public class CleanDebug implements ClientModInitializer {
         }
 
         if (CleanDebugConfig.hardwareMode != HardwareMode.ALL) {
-            var cpuIndex = indexOfStartingWith(text, "CPU: ", false);
+            var cpuIndex = indexOfStartingWith(text, "CPU: ");
 
             if (cpuIndex != -1) {
                 text.subList(cpuIndex, Math.min(cpuIndex + 6, text.size())).clear();
@@ -105,7 +118,7 @@ public class CleanDebug implements ClientModInitializer {
         // Mods
 
         if (CleanDebugConfig.hideSodium) {
-            var sodiumIndex = indexOfStartingWith(text, "§aSodium Renderer", false);
+            var sodiumIndex = indexOfStartingWith(text, "§aSodium Renderer");
 
             if (sodiumIndex != -1) {
                 text.subList(sodiumIndex, Math.min(sodiumIndex + 7, text.size())).clear();
@@ -121,7 +134,7 @@ public class CleanDebug implements ClientModInitializer {
         }
 
         if (CleanDebugConfig.hideModernFix) {
-            var modernFixIndex = indexOfStartingWith(text, "ModernFix", false);
+            var modernFixIndex = indexOfStartingWith(text, "ModernFix");
 
             if (modernFixIndex != -1) {
                 text.subList(modernFixIndex, Math.min(modernFixIndex + 2, text.size())).clear();
@@ -129,7 +142,7 @@ public class CleanDebug implements ClientModInitializer {
         }
 
         if (CleanDebugConfig.hideCaveDust) {
-            var caveDustIndex = indexOfStartingWith(text, "Particle amount evaluated: ", false);
+            var caveDustIndex = indexOfStartingWith(text, "Particle amount evaluated: ");
 
             if (caveDustIndex != -1) {
                 text.remove(caveDustIndex);
@@ -142,6 +155,10 @@ public class CleanDebug implements ClientModInitializer {
                     text.remove(caveDustIndex); // Blank line after
                 }
             }
+        }
+
+        if (CleanDebugConfig.hideCoordinates) {
+            text.removeIf(s -> s.startsWith(Formatting.UNDERLINE + "Targeted Block: "));
         }
 
         while (!text.isEmpty() && text.get(0).isEmpty()) {
@@ -157,16 +174,18 @@ public class CleanDebug implements ClientModInitializer {
         return result.getType();
     }
 
-    private static int indexOfStartingWith(List<String> list, String startingWith, boolean trim) {
+    /**
+     * Returns -1 if it can"t find a string starting with the supplied parameter in the list.
+     */
+    private static int indexOfStartingWith(List<String> list, String startingWith) {
         for (var i = 0; i < list.size(); i++) {
             var string = list.get(i);
-            var toCheck = (trim ? string.trim() : string);
 
             if (startingWith.isEmpty()) {
-                if (toCheck.isEmpty()) {
+                if (string.isEmpty()) {
                     return i;
                 }
-            } else if (toCheck.startsWith(startingWith)) {
+            } else if (string.startsWith(startingWith)) {
                 return i;
             }
         }
