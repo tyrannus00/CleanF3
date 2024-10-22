@@ -17,6 +17,7 @@ dependencies {
 	mappings("net.fabricmc:yarn:$project.yarn_mappings:v2")
 	modImplementation("net.fabricmc:fabric-loader:$project.loader_version")
 
+	// Needed for Midnightlib
 	modRuntimeOnly(fabricApi.module("fabric-models-v0", project.fabric_api_version))
 	modRuntimeOnly(fabricApi.module("fabric-resource-loader-v0", project.fabric_api_version))
 	modRuntimeOnly(fabricApi.module("fabric-rendering-v1", project.fabric_api_version))
@@ -24,7 +25,9 @@ dependencies {
 
 	modImplementation("maven.modrinth:midnightlib:$project.midnightlib_version")
 
+	// Explicit compat, because a nicer way isn't feasible
 	modCompileOnly("maven.modrinth:presence-footsteps:$project.presence_footsteps_version")
+	modCompileOnly("maven.modrinth:distanthorizons:$project.distanthorizons_version")
 }
 
 processResources {

@@ -120,20 +120,6 @@ public class CleanDebug implements ClientModInitializer {
             text.removeIf(s -> s.startsWith("[Iris]"));
         }
 
-        if (CleanDebugConfig.hideDistantHorizons) {
-            var lodModIndexStart = indexOfStartingWith(text, "Distant Horizons: ", false);
-
-            if (lodModIndexStart != -1) {
-                var fixedLines = 10;
-                var endIndex = indexOfStartingWith(text.subList(lodModIndexStart + fixedLines, text.size()), "", false);
-
-                text.subList(
-                        lodModIndexStart - (lodModIndexStart == 0 ? 0 : 1),
-                        endIndex == -1 ? text.size() : lodModIndexStart + fixedLines + endIndex
-                ).clear();
-            }
-        }
-
         if (CleanDebugConfig.hideModernFix) {
             var modernFixIndex = indexOfStartingWith(text, "ModernFix", false);
 

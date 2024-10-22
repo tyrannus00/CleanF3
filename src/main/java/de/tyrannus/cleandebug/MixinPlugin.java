@@ -22,6 +22,8 @@ public class MixinPlugin implements IMixinConfigPlugin {
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (mixinClassName.endsWith("PFDebugHudMixin")) {
             return FabricLoader.getInstance().isModLoaded("presencefootsteps");
+        } else if (mixinClassName.endsWith("DHF3ScreenMixin")) {
+            return FabricLoader.getInstance().isModLoaded("distanthorizons");
         }
 
         return true;
