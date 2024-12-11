@@ -72,7 +72,7 @@ public class CleanDebug implements ClientModInitializer {
         }
 
         if (CleanDebugConfig.hideLambDynamicLights) {
-            text.removeIf(s -> s.startsWith("Dynamic Light Sources: "));
+            text.removeIf(s -> s.startsWith("§d[LDL]"));
         }
 
         if (CleanDebugConfig.hideDynamicFps) {
