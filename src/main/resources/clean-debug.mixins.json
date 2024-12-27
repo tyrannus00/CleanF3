@@ -5,8 +5,8 @@
   "plugin": "de.tyrannus.cleandebug.MixinPlugin",
   "client": [
     "DebugHudMixin",
-    "PFDebugHudMixin",
-    "DHF3ScreenMixin"
+    "DHF3ScreenMixin",
+    "PFDebugHudMixin"
   ],
   "injectors": {
     "defaultRequire": 1
