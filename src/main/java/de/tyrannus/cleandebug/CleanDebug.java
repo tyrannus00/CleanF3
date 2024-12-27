@@ -101,7 +101,11 @@ public class CleanDebug implements ClientModInitializer {
             text.removeIf(s -> s.startsWith("Allocation rate:"));
             text.removeIf(s -> s.startsWith("Allocated:"));
             text.removeIf(s -> s.startsWith("Off-Heap:"));
-            text.remove(0);
+
+            if (!text.isEmpty()) {  // Apparently Sodium Extras messed with the F3-Screen in weird ways
+                text.remove(0);
+            }
+
             text.removeIf(s -> s.startsWith("Direct Buffers:"));
         }
 
