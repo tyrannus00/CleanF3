@@ -18,6 +18,10 @@
   "clean-debug.midnightconfig.hideHelpShortcut.tooltip": "隐藏捷径（按下 F3 + Q 获取帮助）。",
   "clean-debug.midnightconfig.hideNoiseRouter": "隐藏噪音路由器",
   "clean-debug.midnightconfig.hideNoiseRouter.tooltip": "隐藏显示噪音路由器的非常长的行。",
+  "clean-debug.midnightconfig.onlyShowNecessary": "仅显示必要的",
+  "clean-debug.midnightconfig.onlyShowNecessary.tooltip": "从调试屏幕的左侧隐藏了很多内容，只留下大多数人需要的内容。",
+  "clean-debug.midnightconfig.hideCoordinates": "隐藏坐标",
+  "clean-debug.midnightconfig.hideCoordinates.tooltip": "防止坐标在调试屏幕上显示。不会隐藏你正在看的方向。",
 
   "clean-debug.midnightconfig.modsCategory": "模组",
   "clean-debug.midnightconfig.hideSodium": "隐藏钠的调试信息",
@@ -30,6 +34,11 @@
   "clean-debug.midnightconfig.hidePresenceFootsteps": "隐藏脚步声的调试信息",
   "clean-debug.midnightconfig.hideDistantHorizons": "隐藏 Distant Horizons 的调试信息",
   "clean-debug.midnightconfig.hideModernFix": "隐藏现代化修复的调试信息",
+  "clean-debug.midnightconfig.hideJourneyMap": "隐藏 JourneyMap 的调试信息",
+  "clean-debug.midnightconfig.hideLambDynamicLights": "隐藏 LambDynamicLights 的调试信息",
+  "clean-debug.midnightconfig.hideDynamicFps": "隐藏 DynamicFPS 的调试信息",
+  "clean-debug.midnightconfig.hideDynamicFps.tooltip": "DynamicFPS 仅在游戏失去焦点时添加调试信息。",
+  "clean-debug.midnightconfig.hideCaveDust": "隐藏Cave Dust的调试信息",
 
   "modmenu.descriptionTranslation.clean-debug": "从调试屏幕上移除无用的信息。",
   "modmenu.summaryTranslation.clean-debug": "允许您自定义 F3 界面的信息。"
