@@ -162,6 +162,18 @@ public class CleanDebug implements ClientModInitializer {
             }
         }
 
+        if (CleanDebugConfig.hideFigura) {
+            var figuraIndex = indexOfStartingWith(text, "§b[Figura]");
+
+            if (figuraIndex != -1) {
+                text.subList(figuraIndex, Math.min(figuraIndex + 3, text.size())).clear();
+
+                if (figuraIndex > 0 && text.get(figuraIndex - 1).isEmpty()) {
+                    text.remove(figuraIndex - 1);
+                }
+            }
+        }
+
         if (CleanDebugConfig.hideCoordinates) {
             text.removeIf(s -> s.startsWith(Formatting.UNDERLINE + "Targeted Block: "));
         }
