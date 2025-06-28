@@ -162,6 +162,14 @@ public class CleanDebug implements ClientModInitializer {
             }
         }
 
+        if (CleanDebugConfig.hideImmediatelyFast) {
+            var immediatelyFastIndex = indexOfStartingWith(text, "ImmediatelyFast");
+
+            if (immediatelyFastIndex != -1) {
+                text.subList(immediatelyFastIndex, Math.min(immediatelyFastIndex + 2, text.size())).clear();
+            }
+        }
+
         if (CleanDebugConfig.hideCoordinates) {
             text.removeIf(s -> s.startsWith(Formatting.UNDERLINE + "Targeted Block: "));
         }
