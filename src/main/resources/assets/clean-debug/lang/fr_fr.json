@@ -34,6 +34,7 @@
   "clean-debug.midnightconfig.hideLambDynamicLights": "Cache les infos de débogage de LambDynamicLights",
   "clean-debug.midnightconfig.hideDynamicFps": "Cache les infos de débogage de DynamicFps",
   "clean-debug.midnightconfig.hideImmediatelyFast": "Cache les infos de débogage de ImmediatelyFast",
+  "clean-debug.midnightconfig.hideBadOptimizations": "Cache les infos de débogage de BadOptimizations",
 
   "modmenu.descriptionTranslation.clean-debug": "Enlève les informations inutiles de l’écran de débogage.",
   "modmenu.summaryTranslation.clean-debug": "Permet de customiser ce que vous voulez voir sur le menu F3."

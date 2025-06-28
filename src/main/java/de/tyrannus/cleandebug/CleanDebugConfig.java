@@ -75,4 +75,7 @@ public class CleanDebugConfig extends MidnightConfig {
 
     @Entry
     public static boolean hideImmediatelyFast = true;
+    
+    @Entry
+    public static boolean hideBadOptimizations = true;
 }

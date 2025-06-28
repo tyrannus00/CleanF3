@@ -81,6 +81,10 @@ public class CleanDebug implements ClientModInitializer {
             text.removeIf(s -> s.startsWith("§c[Dynamic FPS] "));
         }
 
+        if (CleanDebugConfig.hideBadOptimizations) {
+            text.removeIf(s -> s.startsWith("BadOptimizations"));
+        }
+
         if (CleanDebugConfig.hideCoordinates) {
             var coordIndex = indexOfStartingWith(text, "XYZ: ");
 
