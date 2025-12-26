@@ -133,6 +133,12 @@ public class CleanDebug implements ClientModInitializer {
                 if (sodiumIndex > 0 && text.get(sodiumIndex - 1).isEmpty()) {
                     text.remove(sodiumIndex - 1);
                 }
+            } else {
+                sodiumIndex = indexOfStartingWith(text, "Sodium Renderer"); // Because "planifolia" is funny and removes the coloring for no reason
+
+                if (sodiumIndex != -1) {
+                    text.remove(sodiumIndex);
+                }
             }
         }
 
