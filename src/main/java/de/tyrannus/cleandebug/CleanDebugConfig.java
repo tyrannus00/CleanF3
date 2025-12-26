@@ -72,4 +72,7 @@ public class CleanDebugConfig extends MidnightConfig {
 
     @Entry
     public static boolean hideCaveDust = true;
+
+    @Entry
+    public static boolean hideFigura = true;
 }

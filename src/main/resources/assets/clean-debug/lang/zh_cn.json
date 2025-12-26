@@ -39,6 +39,7 @@
   "clean-debug.midnightconfig.hideDynamicFps": "隐藏 DynamicFPS 的调试信息",
   "clean-debug.midnightconfig.hideDynamicFps.tooltip": "DynamicFPS 仅在游戏失去焦点时添加调试信息。",
   "clean-debug.midnightconfig.hideCaveDust": "隐藏Cave Dust的调试信息",
+  "clean-debug.midnightconfig.hideFigura": "隐藏 Figura 的调试信息",
 
   "modmenu.descriptionTranslation.clean-debug": "从调试屏幕上移除无用的信息。",
   "modmenu.summaryTranslation.clean-debug": "允许您自定义 F3 界面的信息。"
