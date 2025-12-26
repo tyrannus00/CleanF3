@@ -18,7 +18,7 @@ public class CleanDebug implements ClientModInitializer {
     }
 
     public static void modifyLeftText(List<String> text) {
-        text.removeIf(Objects::isNull);    // Some mods are goofy goobers and add null
+        text.removeIf(Objects::isNull);    // Some mods are add null
 
         if (CleanDebugConfig.hideActiveRenderer) {
             text.removeIf(s -> s.startsWith("[Fabric] Active renderer:"));
@@ -95,6 +95,8 @@ public class CleanDebug implements ClientModInitializer {
     }
 
     public static void modifyRightText(List<String> text) {
+        text.removeIf(Objects::isNull);    // Some mods add null
+
         if (CleanDebugConfig.hardwareMode == HardwareMode.NONE) {
             text.removeIf(s -> s.startsWith("Java:"));
             text.removeIf(s -> s.startsWith("Mem:"));
