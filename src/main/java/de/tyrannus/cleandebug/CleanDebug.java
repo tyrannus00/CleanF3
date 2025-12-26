@@ -166,9 +166,11 @@ public class CleanDebug implements ClientModInitializer {
             var figuraIndex = indexOfStartingWith(text, "§b[Figura]");
 
             if (figuraIndex != -1) {
-                text.subList(figuraIndex, Math.min(figuraIndex + 3, text.size())).clear();
+                var figuraEndIndex = indexOfStartingWith(text, "Pings per second:");
 
-                if (figuraIndex > 0 && text.get(figuraIndex - 1).isEmpty()) {
+                text.subList(figuraIndex, figuraEndIndex + 1).clear();
+
+                if (figuraIndex > 0) {  // Empty line before
                     text.remove(figuraIndex - 1);
                 }
             }
