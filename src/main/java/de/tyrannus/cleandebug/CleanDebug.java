@@ -202,7 +202,7 @@ public class CleanDebug implements ClientModInitializer {
     }
 
     /**
-     * Returns -1 if it can"t find a string starting with the supplied parameter in the list.
+     * Returns -1 if it can't find a string starting with the supplied parameter in the list.
      */
     private static int indexOfStartingWith(List<String> list, String startingWith) {
         for (var i = 0; i < list.size(); i++) {
