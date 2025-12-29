@@ -38,6 +38,11 @@ processResources {
 	}
 }
 
+java {
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+}
+
 jar {
 	from("${rootProject.projectDir}/LICENSE.txt")
 }
